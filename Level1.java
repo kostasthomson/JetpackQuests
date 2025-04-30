@@ -14,11 +14,12 @@ public class Level1 extends Level
      * Constructor for objects of class Level1.
      * 
      */
-    public Level1()
+    public Level1(int players)
     {    
-        super(5);
+        super(5, 3, "collect 5 Stars");
         p1 = new Player1();
-        p2 = new Player2();
+        if (players > 1)
+            p2 = new Player2();
         addPlayers();
     } 
     

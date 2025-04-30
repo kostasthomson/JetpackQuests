@@ -14,14 +14,17 @@ public abstract class Level extends World
     protected Player1 p1;
     protected Player2 p2;
     protected int promoScore;
+    protected int lives;
     /**
      * Constructor for objects of class Level.
      * 
      */
-    public Level(int promo_score)
+    public Level(int promo_score, int players_lives, String level_info)
     {    
         super(WorldUtilities.WORLD_WIDTH, WorldUtilities.WORLD_HEIGHT, WorldUtilities.WORLD_PIXEL); 
         promoScore = promo_score;
+        lives = players_lives;
+        addObject(new ScreenText(level_info, Color.CYAN), getWidth()/2, 20);
     }
     
     public void act() {
@@ -42,8 +45,12 @@ public abstract class Level extends World
     }
     
     protected void addPlayers() {
+        p1.setLives(lives);
         p1.show(this, 150, getHeight() / 4);
-        p2.show(this, 150, getHeight() * 3 / 4);
+        if (p2 != null) {
+            p2.setLives(lives);
+            p2.show(this, 150, getHeight() * 3 / 4);
+        }
     }
     
     protected boolean addObjectWithProbability(Class<? extends Actor> cls, int probability) {
@@ -65,19 +72,19 @@ public abstract class Level extends World
     }
     
     private void checkPlayersPromoScore(int promoScore) {
-        if (p1.hasPromoScore(promoScore) || p2.hasPromoScore(promoScore))
+        if (p1.hasPromoScore(promoScore) || (p2!=null && p2.hasPromoScore(promoScore)))
             nextLevel();
     }
     
     private void checkPlayersLives() {
-        if (!p1.hasLives() || !p2.hasLives())
+        if (!p1.hasLives() || (p2!=null && !p2.hasLives()))
             gameOver();
     }
     
     private void applyBoostEffect() {
         List<Prop> props = getObjects(Prop.class);
         for (Prop prop : props) {
-            prop.toggleSpeed(p1.isThrusting() || p2.isThrusting());
+            prop.toggleSpeed(p1.isThrusting() || (p2!=null && p2.isThrusting()));
         }
     }
     

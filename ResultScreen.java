@@ -9,10 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class ResultScreen extends World
 {
     private final int MESSAGE_HEIGHT = 200;
-    private final int OFFSET =100;
+    private final int OFFSET = 100;
     private final int centerX = 400;
-    protected final int p1Score;
-    protected final int p2Score;
+    private int quarter = centerX - 65;
+    private int xPlayerOffset = 100;
     /**
      * Constructor for objects of class ResultScreen.
      * 
@@ -20,16 +20,13 @@ public abstract class ResultScreen extends World
     public ResultScreen(ScreenText screen_text, Player p1, Player p2)
     {    
         super(WorldUtilities.WORLD_WIDTH, WorldUtilities.WORLD_HEIGHT, WorldUtilities.WORLD_PIXEL);
-        p1Score = p1.getScore();
-        p2Score = p2.getScore();
-        p1.setStill();
-        p2.setStill();
-        int quarter = centerX / 2 + 5;
         addObject(screen_text, centerX, MESSAGE_HEIGHT);
-        addObject(p1, quarter, MESSAGE_HEIGHT + OFFSET);
-        addObject(new ScreenScore("Score:", p1Score), quarter + 100, MESSAGE_HEIGHT + OFFSET);
-        addObject(p2, quarter + 300, MESSAGE_HEIGHT + OFFSET);
-        addObject(new ScreenScore("Score:", p2Score), quarter + 400, MESSAGE_HEIGHT + OFFSET);
+        boolean p2Exists = p2 != null;
+        if (p2Exists)
+            quarter = centerX / 2 + 5;
+        showPlayerScore(p1);
+        if (p2Exists)
+            showPlayerScore(p2);
     }
     
     public void act() {
@@ -39,5 +36,13 @@ public abstract class ResultScreen extends World
             Greenfoot.setWorld(new MyWorld());
             Greenfoot.stop();
         }
+    }
+    
+    private void showPlayerScore(Player p) {
+        int pScore = p.getScore();
+        p.setStill();
+        addObject(p, quarter + xPlayerOffset - 100, MESSAGE_HEIGHT + OFFSET);
+        addObject(new ScreenScore(pScore), quarter + xPlayerOffset, MESSAGE_HEIGHT + OFFSET);
+        xPlayerOffset += 300;
     }
 }

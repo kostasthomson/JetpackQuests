@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ScreenScore extends Actor
 {
-    public ScreenScore(String message, int finalScore) {
-        setImage(new GreenfootImage(message + " " + finalScore, 24, Color.WHITE, new Color(0, 0, 0, 160)));
+    public ScreenScore(int finalScore) {
+        setImage(new GreenfootImage("Score: " + finalScore, 24, Color.WHITE, new Color(0, 0, 0, 160)));
     }
 }

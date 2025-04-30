@@ -14,16 +14,14 @@ public class Level2 extends Level
      * 
      */
     public Level2() {
-        this(new Player1(), new Player2());
+        this(new Player1(), null);
     }
-    
+
     public Level2(Player1 player1, Player2 player2)
     {    
-        super(10);
+        super(10, 5, "collect 10 Stars");
         p1 = player1;
         p2 = player2;
-        p1.setLives(5);
-        p2.setLives(5);
         addPlayers();
     }
         
