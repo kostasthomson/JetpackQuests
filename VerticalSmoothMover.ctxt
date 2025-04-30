@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=VerticalSmoothMover
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ VerticalSmoothMover\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=VerticalSmoothMover()
+comment2.params=movement
+comment2.target=VerticalSmoothMover(Vector)
+comment2.text=\r\n\ Create\ new\ thing\ initialised\ with\ given\ speed.\r\n
+comment3.params=
+comment3.target=void\ moveVertical()
+numComments=4
