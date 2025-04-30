@@ -1,12 +1,5 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
-------------------------------------------------------------------------
-
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Jetpack Quests
+PURPOSE OF PROJECT: Class project
+VERSION or DATE: 30/4/2025
+HOW TO START THIS PROJECT: Download Greenfoot and run the project file
+AUTHORS: Konstantinos Thomasiadis
